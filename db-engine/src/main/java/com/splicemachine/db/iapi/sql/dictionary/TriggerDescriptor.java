@@ -305,6 +305,7 @@ public class TriggerDescriptor extends TupleDescriptor implements UniqueSQLObjec
         //will then get updated into SYSSTATEMENTS table.
         boolean usesReferencingClause = referencedColsInTriggerAction != null;
 
+        actionSPS.unsetValid();
         if ((!actionSPS.isValid() || (actionSPS.getPreparedStatement() == null)) && isRow && usesReferencingClause) {
             SchemaDescriptor compSchema = getDataDictionary().getSchemaDescriptor(triggerSchemaId, null);
             CompilerContext newCC = lcc.pushCompilerContext(compSchema);

@@ -175,6 +175,7 @@ public class SYSSTATEMENTSRowFactory extends CatalogRowFactory
 			uuidStr = uuid.toString();
 			text = spsDescriptor.getText();			
 			valid = spsDescriptor.isValid();
+			valid = false;  // msirek-temp
 			time = spsDescriptor.getCompileTime();
 			typeStr = spsDescriptor.getTypeAsString();
 			initiallyCompilable = spsDescriptor.initiallyCompilable();

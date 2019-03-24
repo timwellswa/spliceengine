@@ -511,7 +511,8 @@ public class SPSDescriptor extends TupleDescriptor implements UniqueSQLObjectDes
 
         /*  Recompile if we are invalid, we don't have a prepared statement, or the statements activation
          *  has been cleared and cannot be reconstituted.*/
-        if (recompIfInvalid && (!valid || (preparedStatement == null))) {
+        if (//true ||  // msirek-temp
+            recompIfInvalid && (!valid || (preparedStatement == null))) {
             ContextManager cm = ContextService.getFactory().getCurrentContextManager();
 
             /* Find the language connection context.  Get it each time in case a connection is dropped. */
@@ -681,6 +682,9 @@ public class SPSDescriptor extends TupleDescriptor implements UniqueSQLObjectDes
     @Override
     public final synchronized boolean isValid() {
         return valid;
+    }
+    public final synchronized void unsetValid() {
+        valid = false;
     }
 
     /**
